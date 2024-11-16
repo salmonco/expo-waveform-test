@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { SafeAreaView } from "react-native";
+import WaveformScreen from "./screens/Waveform";
 
 export default function App() {
+  const sampleCount = 100; // 샘플 수
+
+  const waveformArray = Array.from(
+    { length: sampleCount },
+    () => Math.random() * 0.5
+  );
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+    >
+      <WaveformScreen waveformArray={waveformArray} />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
